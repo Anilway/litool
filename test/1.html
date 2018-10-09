@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">刷新</button>
+	<div id="app"></div>
+	<script src='litool.js'></script>
+	<script>
+		$.on(btn,'click',function(){
+			window.location.reload();
+		});
+		$.css(app,{width:100,height:100,background:'red',color:'white',padding:10});
+		$.on(app,'mouseover',function(){
+			$.animate({
+				ele:app,
+				target:{height:300},
+				duration:500,
+				callBack:function(){
+					$.css(app,'width',200);
+				}
+			})
+		});
+		$.on(app,'mouseout',function(){
+			$.animate({
+				ele:app,
+				target:{height:100},
+				duration:500,
+				callBack:function(){
+					$.css(app,'width',100);
+				}
+			})
+		});
+
+		var url='https://www.google.com/search?safe=strict&ei=2Ay8W-eJE-eq0PEP8rW5oA0&q=vue&oq=vue&gs_l=psy';
+
+		console.log(url.myQueryURL());
+		console.log(url.myQueryURLAll(true));
+		console.log($.toInitialUpper('asdf'));
+
+		var nodeArr=document.getElementsByTagName('*');
+		nodeArr=$.toArray(nodeArr);
+		console.log(Object.prototype.toString.call(nodeArr));
+
+		$.ajax({
+			url:'https://sslapi.hitokoto.cn/?encode=json',
+			success:function(res){
+				app.innerHTML+=res.hitokoto;
+			}
+		});
+	</script>
+</body>
+</html>
