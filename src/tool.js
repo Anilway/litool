@@ -19,6 +19,27 @@ var tool=(function(){
 	}
 
 	/*
+		myIndexOf:查询数组项的索引位置
+			@parameter:
+				value:数组项
+			@return：
+				index：返回该项在数组中的索引位置，没有返回-1
+
+		IE6-8下indexOf和lastIndexOf不兼容
+	*/
+	Array.prototype.myIndexOf=function(value){
+		var result=-1;
+		for(var i=0;i<this.length;i++){
+			if(value===this[i]){
+				result=i;
+				break;
+			}
+		}
+
+		return result;
+	}
+
+	/*
 		myBind:bind的兼容处理
 			@parameter
 				context:指定的this

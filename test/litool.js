@@ -15,6 +15,17 @@
 			}
 			return ary;
 		}
+		Array.prototype.myIndexOf=function(value){
+			var result=-1;
+			for(var i=0;i<this.length;i++){
+				if(value===this[i]){
+					result=i;
+					break;
+				}
+			}
+
+			return result;
+		}
 		Function.prototype.myBind=function myBind(context){
 			context=context||window;
 			var outerArg=Array.prototype.slice.call(arguments,1);
